@@ -26,7 +26,7 @@ export class ToastService {
     toast.classList.add("alert", alertClass, "shadow-lg");
     toast.innerHTML = `
       <span>${message}</span>
-      <button class="ml-4 btn btn-sm btn-ghost>x</button>
+      <button class="ml-4 btn btn-sm btn-ghost">x</button>
     `;
     toast.querySelector("button")?.addEventListener("click", () => {
       toastContainer.removeChild(toast)
