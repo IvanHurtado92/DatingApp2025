@@ -1,35 +1,34 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace API.Controllers
+namespace API.Controllers;
+
+public class ErrorController : BaseApiController
 {
-    public class ErrorController : BaseApiController
+
+    [HttpGet("bad-request")]
+    public IActionResult GetBadRequest() // 400
     {
-        [HttpGet("bad-request")]
-        public IActionResult GetBadRequest() //400
-        {
-            return BadRequest("Bad request");
-        }
+        var inputParam = -1;
+        if (inputParam <= 0) throw new ArgumentOutOfRangeException(nameof(inputParam));
+        
+        return BadRequest("Bad request");
+    }
 
-        [HttpGet("auth")]
-        public IActionResult GetAuth() //401
-        {
-            return Unauthorized();
-        }
+    [HttpGet("auth")]
+    public IActionResult GetAuth() // 401
+    {
+        return Unauthorized();
+    }
 
-        [HttpGet("not-found")]
-        public IActionResult GetNotFound()
-        {
-            return NotFound();
-        }
+    [HttpGet("not-found")]
+    public IActionResult GetNotFound() // 404
+    {
+        return NotFound();
+    }
 
-        [HttpGet("server-error")]
-        public IActionResult GerServerError()
-        {
-            throw new Exception("Server error");
-        }
+    [HttpGet("server-error")]
+    public IActionResult GetServerError() // 500
+    {
+        throw new Exception("Server error");
     }
 }
