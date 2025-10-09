@@ -6,6 +6,7 @@ import { Lists } from '../features/lists/lists';
 import { Messages } from '../features/messages/messages';
 import { authGuard } from '../core/guard/auth-guard';
 import { TestErrors } from '../features/test-errors/test-errors';
+import { NotFound } from '../shared/errors/not-found/not-found';
 
 export const routes: Routes = [
     {path: "", component: Home}, // ruta raiz
@@ -21,5 +22,5 @@ export const routes: Routes = [
         ]
     },
     {path: "errors", component: TestErrors}, // le pones el nombre que tendrá la ruta en path, ya el componente es el .ts vinculado a su HTML
-    {path: "**", component: Home} //cualquiera que no coincida con las rutas anteriores
+    {path: "**", component: NotFound} //cualquiera que no coincida con las rutas anteriores
 ];
