@@ -22,5 +22,7 @@ namespace API.Entities
         // Navigation Properties, Cómo va a relacionar los elementos en la BD
         [ForeignKey(nameof(Id))]
         public AppUser User { get; set; } = null!; // con esto vinculamos la clase Member a User para Entity Framework
+
+        public List<Photo> Photos { get; set; } = [];
     }
 }
