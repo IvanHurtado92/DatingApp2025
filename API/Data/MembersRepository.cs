@@ -1,4 +1,3 @@
-using System;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +13,8 @@ public class MembersRepository(AppDbContext context) : IMembersRepository
 
     public async Task<IReadOnlyList<Member>> GetMembersAsync()
     {
-        return await context.Members.ToListAsync();
+        return await context.Members
+        .ToListAsync();
     }
 
     public async Task<IReadOnlyList<Photo>> GetPhotosAsync(string memberId)
