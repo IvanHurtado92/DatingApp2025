@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace API.Entities
@@ -20,9 +21,11 @@ namespace API.Entities
         public required string Country { get; set; }
 
         // Navigation Properties, Cómo va a relacionar los elementos en la BD
+        [JsonIgnore]
         [ForeignKey(nameof(Id))]
         public AppUser User { get; set; } = null!; // con esto vinculamos la clase Member a User para Entity Framework
 
+        [JsonIgnore]
         public List<Photo> Photos { get; set; } = [];
     }
 }
