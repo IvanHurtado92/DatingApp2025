@@ -1,7 +1,7 @@
 meta {
-  name: Login - Valid
+  name: Login - Bad Email
   type: http
-  seq: 3
+  seq: 1
 }
 
 post {
@@ -12,14 +12,14 @@ post {
 
 body:json {
   {
-    "email": "arenita@test.com",
+    "email": "sadsadf@test.com",
     "password": "Pa$$w0rd"
   }
 }
 
 tests {
   test("Should be able to login", function() {
-    expect(res.getStatus()).to.equal(200);
+    expect(res.getStatus()).to.equal(401);
   })
   const data = res.body;
   bru.setEnvVar("authToken", data.token)

@@ -1,11 +1,11 @@
 meta {
   name: Members - Valid
   type: http
-  seq: 2
+  seq: 3
 }
 
 get {
-  url: https://localhost:7031/api/members
+  url: {{baseUrl}}/api/members
   body: none
   auth: bearer
 }
@@ -21,7 +21,7 @@ tests {
   
   test("Should return 10 members", function(){
     const jsonData = res.getBody();
-    const firstMember = jsonData.[0];
+    const firstMember = jsonData[0];
     
     expect(firstMember).to.have.property("id");
     expect(firstMember).to.have.property("displayName");
